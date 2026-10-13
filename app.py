@@ -20,4 +20,10 @@ print(data[0]['id'])
 
 
 def allpokes():
-    enumerate
+    lang = input("what langauge?")
+    if lang.lower != 'english':
+        print("language not included")
+        return
+    for id in enumerate(data):
+        print(id[1]['name']['english'])
+allpokes()
