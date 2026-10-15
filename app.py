@@ -21,9 +21,18 @@ print(data[0]['id'])
 
 def allpokes():
     lang = input("what langauge?")
-    if lang.lower != 'english':
+    lang=lang.lower().replace(" ", "")
+    if lang != "english" and lang != "french" and lang != "japanese" and lang != "chinese":
         print("language not included")
         return
     for id in enumerate(data):
-        print(id[1]['name']['english'])
-allpokes()
+        print(id[1]['name'][lang])
+# allpokes()
+
+def findtype():
+    type = input("what type?").lower().replace(" ", "")
+    for id in enumerate(data):
+        if id[1]['type'][0]
+
+        
+findtype()
