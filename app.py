@@ -35,18 +35,30 @@ def pokedexa():
     "Fighting", "Poison", "Ground", "Flying", "Psychic", 
     "Bug", "Rock", "Ghost", "Dragon", "Dark", "Steel", "Fairy"
     }
+    languages = {
+        "english", "french", "japanese", "chinese"
+    }
+
+    while True:
+        print("Welcome to the pokedex!")
+        go = input("Would you like to search for a pokemon?").lower().replace(" ", "")
+        if go == 'yes':
+            break
+        elif go == 'no':
+            return
+
     good=[]
     goodname=[]
-    lang = input("what langauge?").lower().replace(" ", "")
-    if lang != "english" and lang != "french" and lang != "japanese" and lang != "chinese":
-        print("language not included")
+    lang = input("Language?").lower().replace(" ", "")
+    if lang not in languages:
+        print("Language not included")
         return
     tool = input("Search for type or name?").replace(" ", "")
 
     if tool == "type":
-        type = input("what type?").replace(" ", "")
+        type = input("What type?").replace(" ", "")
         if type not in normaltypes:
-            print("not an existing type")
+            print("Not an existing type")
             return
         for id in enumerate(data):
             if type in id[1]['type']:
@@ -55,10 +67,13 @@ def pokedexa():
             print(poke)
 
     elif tool == "name":
-        names = input("what name?").replace(" ", "")
+        names = input("What name? Remember it is case-specific.").replace(" ", "")
         for id in enumerate(data):
-            if names in id[1]['names'][lang]:
-                good.append(id[1]['name'][lang])
+            if names in id[1]['name'][lang]:
+                goodname.append(id[1]['name'][lang])
+        if goodname == []:
+            print("None found")
+            return
         for poke in goodname:
             print(poke)
         
