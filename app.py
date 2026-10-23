@@ -25,7 +25,7 @@ def allpokes():
     if lang != "english" and lang != "french" and lang != "japanese" and lang != "chinese":
         print("language not included")
         return
-    for id in enumerate(data):
+    for id in data:
         print(id[1]['name'][lang])
 # allpokes()
 
