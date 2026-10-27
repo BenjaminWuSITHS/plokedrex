@@ -1,8 +1,10 @@
 import json
 ## Open the JSON file of pokemon data
 pokedex = open("./pokedex.json", encoding="utf8")
+moves = open("./moves.json", encoding="utf8")
 ## create variable "data" that represents the enitre pokedex list
 data = json.load(pokedex)
+move = json.load(moves)
 print(data[0])
 
 # Create a function that will take the data from the JSON file and you will iterate through the list of pokemon and print each pokemons name.
@@ -18,6 +20,15 @@ print(data[0])
 
 print(data[0]['id'])
 
+def findmoves(namelist, type):
+    if type == []:
+        for pokes in data[1]['name']['english']:
+            type.append(data[])
+    for i, pokes in enumerate(namelist):
+        print(f"{i}:{pokes}, {type[i]}")
+    find = int(input("Which pokemon do you want to find the possible moves for? (The number)"))
+
+findmoves(["Charizard", "Pikachu"], ["Fire/Flying", "Electric"])
 
 def allpokes():
     lang = input("what langauge?")
@@ -60,7 +71,7 @@ def pokedexa():
         if type not in normaltypes:
             print("Not an existing type")
             return
-        for id in enumerate(data):
+        for id in data:
             if type in id[1]['type']:
                 good.append(id[1]['name'][lang])
         for poke in good:
@@ -68,7 +79,7 @@ def pokedexa():
 
     elif tool == "name":
         names = input("What name? Remember it is case-specific.").replace(" ", "")
-        for id in enumerate(data):
+        for id in data:
             if names in id[1]['name'][lang]:
                 goodname.append(id[1]['name'][lang])
         if goodname == []:
@@ -76,5 +87,7 @@ def pokedexa():
             return
         for poke in goodname:
             print(poke)
-        
-pokedexa()
+
+
+
+#pokedexa()
