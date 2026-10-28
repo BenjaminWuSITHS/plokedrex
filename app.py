@@ -37,7 +37,7 @@ def findmoves(namelist, type):
 
 
 # findmoves(["Charizard", "Pikachu"], [])
-findmoves(["Charizard", "Pikachu"], [["Fire", "Flying"], ["Electric"]])
+# findmoves(["Charizard", "Pikachu"], [["Fire", "Flying"], ["Electric"]])
 
 def allpokes():
     lang = input("what langauge?")
@@ -46,7 +46,7 @@ def allpokes():
         print("language not included")
         return
     for id in data:
-        print(id[1]['name'][lang])
+        print(id['name'][lang])
 # allpokes()
 
 def pokedexa():
@@ -81,8 +81,8 @@ def pokedexa():
             print("Not an existing type")
             return
         for id in data:
-            if type in id[1]['type']:
-                good.append(id[1]['name'][lang])
+            if type in id['type']:
+                good.append(id['name'][lang])
         for poke in good:
             print(poke)
         
@@ -90,8 +90,8 @@ def pokedexa():
     elif tool == "name":
         names = input("What name? Remember it is case-specific.").replace(" ", "")
         for id in data:
-            if names in id[1]['name'][lang]:
-                goodname.append(id[1]['name'][lang])
+            if names in id['name'][lang]:
+                goodname.append(id['name'][lang])
         if goodname == []:
             print("None found")
             return
@@ -107,4 +107,4 @@ def pokedexa():
         return
 
 
-#pokedexa()
+pokedexa()
