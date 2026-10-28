@@ -22,13 +22,22 @@ print(data[0]['id'])
 
 def findmoves(namelist, type):
     if type == []:
-        for pokes in data[1]['name']['english']:
-            type.append(data[])
+        for id in data:
+            for pokes in namelist:
+                if pokes in id['name']['english']:
+                    type.append(id["type"])
     for i, pokes in enumerate(namelist):
-        print(f"{i}:{pokes}, {type[i]}")
+        print(f"{i}: {pokes}, {type[i]}")
     find = int(input("Which pokemon do you want to find the possible moves for? (The number)"))
+    print(type[find])
+    for i in range(len(type[find])):
+        for types in move:
+            if types['type'] == type[find][i]:
+                print(types['ename'])
 
-findmoves(["Charizard", "Pikachu"], ["Fire/Flying", "Electric"])
+
+# findmoves(["Charizard", "Pikachu"], [])
+findmoves(["Charizard", "Pikachu"], [["Fire", "Flying"], ["Electric"]])
 
 def allpokes():
     lang = input("what langauge?")
@@ -76,6 +85,7 @@ def pokedexa():
                 good.append(id[1]['name'][lang])
         for poke in good:
             print(poke)
+        
 
     elif tool == "name":
         names = input("What name? Remember it is case-specific.").replace(" ", "")
@@ -87,7 +97,14 @@ def pokedexa():
             return
         for poke in goodname:
             print(poke)
-
+    tool2 = input("Search for moves?")
+    if tool2.lower() == "yes":
+        if tool == "name":
+            findmoves(goodname,[])
+        elif tool == "type":
+            findmoves(good, [])
+    else:
+        return
 
 
 #pokedexa()
