@@ -21,7 +21,9 @@ print(data[0])
 print(data[0]['id'])
 
 def findmoves(namelist, type):
-    if type == []:
+    if namelist == []:
+        return('Failed')
+    elif type == []:
         for id in data:
             for pokes in namelist:
                 if pokes in id['name']['english']:
@@ -29,15 +31,10 @@ def findmoves(namelist, type):
     for i, pokes in enumerate(namelist):
         print(f"{i}: {pokes}, {type[i]}")
     find = int(input("Which pokemon do you want to find the possible moves for? (The number)"))
-    print(type[find])
     for i in range(len(type[find])):
         for types in move:
             if types['type'] == type[find][i]:
                 print(types['ename'])
-
-
-# findmoves(["Charizard", "Pikachu"], [])
-# findmoves(["Charizard", "Pikachu"], [["Fire", "Flying"], ["Electric"]])
 
 def allpokes():
     lang = input("what langauge?")
