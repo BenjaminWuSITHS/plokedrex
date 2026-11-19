@@ -46,6 +46,40 @@ def allpokes():
         print(id['name'][lang])
 # allpokes()
 
+
+def pokesfunc(lang, goodname, tool, good):
+        names = input("What name? Remember it is case-specific.").replace(" ", "")
+        for id in data:
+            if names in id['name'][lang]:
+                goodname.append(id['name'][lang])
+        if goodname == []:
+            print("None found")
+            return
+        for poke in goodname:
+            print(poke)
+            search2(tool, good, goodname)
+
+def pokesfunc2(normaltypes, lang, good):
+        type = input("What type?").replace(" ", "")
+        if type not in normaltypes:
+            print("Not an existing type")
+            return
+        for id in data:
+            if type in id['type']:
+                good.append(id['name'][lang])
+        for poke in good:
+            print(poke)
+
+def search2(tool, good, goodname):
+    tool2 = input("Search for moves?")
+    if tool2.lower() == "yes":
+        if tool == "name":
+            findmoves(goodname,[])
+        elif tool == "type":
+            findmoves(good, [])
+    else:
+        return
+
 def pokedexa():
     normaltypes = {
     "Normal", "Fire", "Water", "Electric", "Grass", "Ice", 
@@ -73,35 +107,10 @@ def pokedexa():
     tool = input("Search for type or name?").replace(" ", "")
 
     if tool == "type":
-        type = input("What type?").replace(" ", "")
-        if type not in normaltypes:
-            print("Not an existing type")
-            return
-        for id in data:
-            if type in id['type']:
-                good.append(id['name'][lang])
-        for poke in good:
-            print(poke)
+        pokesfunc2(normaltypes, lang, good)
         
-
     elif tool == "name":
-        names = input("What name? Remember it is case-specific.").replace(" ", "")
-        for id in data:
-            if names in id['name'][lang]:
-                goodname.append(id['name'][lang])
-        if goodname == []:
-            print("None found")
-            return
-        for poke in goodname:
-            print(poke)
-    tool2 = input("Search for moves?")
-    if tool2.lower() == "yes":
-        if tool == "name":
-            findmoves(goodname,[])
-        elif tool == "type":
-            findmoves(good, [])
-    else:
-        return
+        pokesfunc(lang, goodname, tool, good)
 
 
 pokedexa()
